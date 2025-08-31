@@ -6,7 +6,6 @@ close all;
 basemva = 100;
 accuracy = 5e-5;
 maxiter = 50;
-
 % Du lieu nut: so nut - Loai nut(1Slack,2PV,0PQ) - Dien ap - goc - Tai MW,
 % Mvar - Phat MW, Mvar
 busdata = [
@@ -111,7 +110,7 @@ V_mag = busdata(:,3);
 V_ang = busdata(:,4) * pi/180;
 P_sch = (busdata(:,7) - busdata(:,5)) / basemva;
 Q_sch = (busdata(:,8) - busdata(:,6)) / basemva;
-non_slack_buses = find(bus_code == 0 | bus_code == 2); %l‡ PV+PQ
+non_slack_buses = find(bus_code == 0 | bus_code == 2); %l√† PV+PQ
 pq_buses = find(bus_code == 0);
 V = V_mag .* exp(1j * V_ang);
 
@@ -276,4 +275,5 @@ for i = 1:size(linedata, 1)
     fprintf('\n----------------------------------------------------------------');
 end
 fprintf('\n Tong ton that                                   | %8.4f %8.4f', total_loss_P, total_loss_Q);
+
 fprintf('\n================================================================\n');
